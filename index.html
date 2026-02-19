@@ -9,9 +9,9 @@
   <meta name="format-detection" content="telephone=no" />
 
   <title>Agencia Peak | Comunicación, Marketing, PR, Influencers y Producción</title>
+  <link rel="stylesheet" href="./assets/css/tailwind.css">
   <meta name="description" content="Agencia Peak: comunicación estratégica, PR, influencers, booking, producción de eventos y contenidos. Conecta tu marca con audiencias y resultados." />
 
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
 
@@ -266,6 +266,15 @@
   .lang-btn:hover { background:rgba(42,62,140,.07); color:rgb(42,62,140); }
   .lang-btn.active { background:rgba(42,62,140,.10); color:rgb(42,62,140); border-color:rgba(42,62,140,.20); }
   .lang-btn .flag { font-size:16px; line-height:1; }
+  .flag-img{
+  width:16px;
+  height:16px;
+  border-radius:4px;
+  display:inline-block;
+  object-fit:cover;
+  margin-right:6px;
+  vertical-align:middle;
+}
 </style>
 </head>
 
@@ -287,15 +296,17 @@
         </nav>
 
         <div class="hidden md:flex items-center gap-3">
-          <div class="lang-selector ml-1">
-            <a href="index.html" class="lang-btn active" title="Español"><span class="flag">🇨🇱</span> ES</a>
-            <a href="index_en.html" class="lang-btn" title="English"><span class="flag">🇺🇸</span> EN</a>
-            <a href="index_pt.html" class="lang-btn" title="Português"><span class="flag">🇧🇷</span> PT</a>
-          </div>
-          <a href="#contacto" class="btn btn-dark">Hablemos</a>
-          <a href="https://wa.me/c/56999390680" target="_blank" rel="noopener noreferrer" class="btn" style="background:#25D366;color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.28);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="16" height="16" style="display:inline;vertical-align:middle;margin-right:5px;flex-shrink:0"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.26-1.24A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.9 13.4c-.22.62-1.3 1.2-1.79 1.27-.46.06-1.04.09-1.68-.1-.39-.12-.88-.28-1.52-.56-2.67-1.14-4.41-3.85-4.54-4.03-.13-.18-1.04-1.38-1.04-2.64 0-1.26.66-1.88.9-2.13.22-.25.49-.31.65-.31h.47c.15 0 .35-.06.55.42l.76 1.96c.06.16.1.35.01.53l-.3.47-.44.5c-.16.16-.33.33-.14.65.18.31.81 1.34 1.74 2.17 1.2 1.07 2.2 1.4 2.52 1.55.3.15.49.13.67-.08l.9-1.06c.18-.22.36-.18.6-.11l2.01.95c.24.11.4.17.44.26.05.11.05.58-.16 1.2z"/></svg>Ver catálogo</a>
+          <div class="lang-selector ml-1"> 
+          <a href="index.html" class="lang-btn active" title="Español">
+          <img src="./assets/banderas/Chile.png" alt="Chile" class="flag-img" /> ES
+          </a>
+          <a href="index_en.html" class="lang-btn" title="English">
+          <img src="./assets/banderas/USA.png" alt="USA" class="flag-img" /> EN
+          </a>
+          <a href="index_pt.html" class="lang-btn" title="Português">
+          <img src="./assets/banderas/Brasil.png" alt="Brasil" class="flag-img" /> PT
+          </a>
         </div>
-
         <button id="menuBtn" class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl border border-slate-200 text-slate-800 hover:bg-slate-50" aria-label="Abrir menú">☰</button>
       </div>
 
@@ -308,10 +319,17 @@
           <a class="py-2" href="#contacto">Contacto</a>
           
           <div class="pt-2 flex gap-2 justify-center">
-            <a href="index.html" class="lang-btn active">🇨🇱 ES</a>
-            <a href="index_en.html" class="lang-btn">🇺🇸 EN</a>
-            <a href="index_pt.html" class="lang-btn">🇧🇷 PT</a>
+          <a href="index.html" class="lang-btn active" title="Español">
+          <img src="./assets/banderas/Chile.png" alt="Chile" class="flag-img" /> ES
+          </a>
+          <a href="index_en.html" class="lang-btn" title="English">
+          <img src="./assets/banderas/USA.png" alt="USA" class="flag-img" /> EN
+          </a>
+          <a href="index_pt.html" class="lang-btn" title="Português">
+          <img src="./assets/banderas/Brasil.png" alt="Brasil" class="flag-img" /> PT
+          </a>
           </div>
+
           <div class="pt-2 flex gap-2">
             <a href="#contacto" class="btn btn-dark w-full">Hablemos</a>
             <a href="https://wa.me/c/56999390680" target="_blank" rel="noopener noreferrer" class="btn w-full" style="background:#25D366;color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.28);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="16" height="16" style="display:inline;vertical-align:middle;margin-right:5px;flex-shrink:0"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.26-1.24A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.9 13.4c-.22.62-1.3 1.2-1.79 1.27-.46.06-1.04.09-1.68-.1-.39-.12-.88-.28-1.52-.56-2.67-1.14-4.41-3.85-4.54-4.03-.13-.18-1.04-1.38-1.04-2.64 0-1.26.66-1.88.9-2.13.22-.25.49-.31.65-.31h.47c.15 0 .35-.06.55.42l.76 1.96c.06.16.1.35.01.53l-.3.47-.44.5c-.16.16-.33.33-.14.65.18.31.81 1.34 1.74 2.17 1.2 1.07 2.2 1.4 2.52 1.55.3.15.49.13.67-.08l.9-1.06c.18-.22.36-.18.6-.11l2.01.95c.24.11.4.17.44.26.05.11.05.58-.16 1.2z"/></svg>Ver catálogo</a>
