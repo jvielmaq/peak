@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="#ffffff" name="theme-color"/>
+<meta content="telephone=no" name="format-detection"/>
+<title>Agencia Peak | Communications, Marketing, PR, Influencers &amp; Production</title>
+<link href="./assets/css/tailwind.css" rel="stylesheet"/>
+<meta content="Agencia Peak: strategic communications, PR, influencers, booking, event production and content. Connect your brand with audiences and results." name="description"/>
+<style>
+
+    :root{
+      --peak-blue: 42,62,140;
+      --peak-sky: 76,181,245;
+      --peak-red: 225,29,72;
+      --peak-green: 34,197,94;
+      --peak-ink: 15,23,42;
+    }
+    html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+    *, *::before, *::after { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+    body { -webkit-overflow-scrolling: touch; }
+    input, select, textarea, button { font-family: inherit; -webkit-appearance: none; appearance: none; }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px !important; }
+    .btn { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+    .peak-underline{ position:relative; display:inline-block; }
+    .peak-underline::after{
+      content:""; position:absolute; left:0; bottom:-10px; width:100%; height:6px;
+      border-radius:999px; background: rgba(var(--peak-sky), .35);
+    }
+
+    .reveal{ opacity:0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in{ opacity:1; transform:none; }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      border-radius: 14px; padding: 12px 18px; font-weight: 700; font-size: 14px;
+      transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, color .15s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{ background: rgb(var(--peak-green)); color: white; box-shadow: 0 12px 24px rgba(34,197,94,.18); }
+    .btn-primary:hover{ box-shadow: 0 18px 34px rgba(34,197,94,.22); }
+    .btn-secondary{ background: rgba(var(--peak-blue), .08); color: rgb(var(--peak-blue)); border: 1px solid rgba(var(--peak-blue), .20); }
+    .btn-secondary:hover{ background: rgba(var(--peak-blue), .12); }
+    .btn-dark{ background: rgb(var(--peak-ink)); color: #fff; box-shadow: 0 12px 24px rgba(15,23,42,.18); }
+    .btn-dark:hover{ box-shadow: 0 18px 34px rgba(15,23,42,.22); }
+
+    #contactForm input,#contactForm select,#contactForm textarea{
+      border: 2px solid rgba(var(--peak-blue),0.22) !important;
+      background: rgba(var(--peak-sky),0.06) !important;
+      color: rgb(var(--peak-ink)) !important;
+    }
+    #contactForm input::placeholder,#contactForm textarea::placeholder{ color: rgba(15,23,42,0.45) !important; }
+    #contactForm input:focus,#contactForm select:focus,#contactForm textarea:focus{
+      outline:none !important; border-color: rgba(var(--peak-sky),0.95) !important;
+      box-shadow: 0 0 0 4px rgba(var(--peak-sky),0.22) !important; background: #fff !important;
+    }
+
+    .filterBtn[aria-pressed="true"]{ background: rgb(var(--peak-blue)); color:#fff; border-color: transparent; }
+    .filterBtn[aria-pressed="false"]{ background:#fff; color: rgb(var(--peak-ink)); border-color: rgba(148,163,184,.45); }
+    .filterBtn:focus-visible{ outline:none; box-shadow: 0 0 0 4px rgba(var(--peak-sky),0.22); }
+
+    #logosGrid img{
+      filter: grayscale(100%) brightness(0.92) sepia(70%) hue-rotate(195deg) saturate(420%) contrast(1.05);
+      opacity:.92; transform:none !important; transition: filter .25s ease, opacity .25s ease;
+    }
+    #logosGrid .group{ transition: box-shadow .25s ease, transform .25s ease; }
+    #logosGrid .group:hover{ box-shadow: 0 10px 30px rgba(42,62,140,0.10); transform: translateY(-1px); }
+    #logosGrid .group:hover img{
+      filter: grayscale(100%) brightness(0.88) sepia(85%) hue-rotate(195deg) saturate(520%) contrast(1.12);
+      opacity:1; transform:none !important;
+    }
+
+    .carousel{
+      position: relative; border-radius: 18px; overflow: hidden;
+      border: 1px solid rgba(148,163,184,.35);
+      background: linear-gradient(180deg, rgba(76,181,245,.06), rgba(255,255,255,1));
+    }
+    .carousel-track{ display:flex; transition: transform .45s ease; will-change: transform; }
+    /* Carrusel: mostrar foto completa (sin cortar caras) */
+    .carousel-slide{ min-width: 100%; position: relative; background: linear-gradient(180deg, rgba(76,181,245,.10), rgba(76,181,245,.02)); }
+    .carousel-slide img{
+      width: 100%;
+      height: 240px;
+      object-fit: contain;           /* clave: no recorta */
+      object-position: center;
+      display: block;
+      padding: 10px;                /* aire para fotos verticales */
+      background: rgba(255,255,255,.75);
+    }
+    @media (min-width: 768px){ .carousel-slide img{ height: 260px; padding: 12px; } }
+    .carousel-btn{
+      position:absolute; top:50%; transform: translateY(-50%);
+      width:40px;height:40px; border-radius:999px; background: rgba(15,23,42,.55); color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      transition: background .15s ease, transform .15s ease; user-select:none;
+    }
+    .carousel-btn:hover{ background: rgba(15,23,42,.70); }
+    .carousel-btn:active{ transform: translateY(-50%) scale(.98); }
+    .carousel-btn.prev{ left: 10px; } .carousel-btn.next{ right: 10px; }
+    .carousel-dots{
+      position:absolute; left: 0; right: 0; bottom: 10px; display:flex; gap: 6px; justify-content:center;
+      padding: 0 12px; flex-wrap: wrap;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius:999px; background: rgba(255,255,255,.55);
+      border: 1px solid rgba(15,23,42,.20); cursor:pointer;
+      transition: transform .15s ease, background .15s ease;
+    }
+    .dot[aria-current="true"]{ background: rgba(34,197,94,.95); transform: scale(1.15); border-color: transparent; }
+
+    .badge{
+      display:inline-flex; align-items:center; gap: 8px; padding: 8px 12px; border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.45); background: rgba(255,255,255,.65);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      font-weight: 700; font-size: 12px; color: rgb(var(--peak-ink));
+    }
+    .badge .dot{ width: 8px; height: 8px; background: rgb(var(--peak-sky)); border:none; }
+  
+
+/* Carouseles: foto completa (contain) + fondo difuminado para evitar cajas vacías */
+.carousel-slide{ position: relative; overflow: hidden; border-radius: 18px; }
+.carousel-bg{
+  position:absolute; inset:0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.12);
+  filter: blur(28px) saturate(1.1);
+  opacity: .55;
+}
+.carousel-shade{
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,.10), rgba(255,255,255,.65));
+}
+.carousel-img{
+  position: relative; z-index: 2;
+  width: 100%; height: 100%;
+  object-fit: contain;
+  padding: 14px;
+  filter: drop-shadow(0 10px 25px rgba(2,6,23,.12));
+}
+.carousel-zoom{
+  position:absolute; right: 10px; top: 10px; z-index: 3;
+  display:inline-flex; align-items:center; justify-content:center;
+  width: 40px; height: 40px; border-radius: 9999px;
+  background: rgba(255,255,255,.85);
+  border: 1px solid rgba(148,163,184,.5);
+  color: rgb(var(--peak-blue));
+  box-shadow: 0 10px 25px rgba(2,6,23,.12);
+  transition: transform .2s ease, background .2s ease;
+}
+.carousel-zoom:hover{ transform: translateY(-1px) scale(1.03); background: rgba(255,255,255,.95); }
+
+
+  /* Iconos sociales */
+  .social-icon-btn { display:inline-flex; align-items:center; justify-content:center; border-radius:9999px; transition:transform .2s ease, opacity .2s ease; }
+  .social-icon-btn:hover { transform:scale(1.1); opacity:.9; }
+
+  /* Hero pills */
+  .hero-pill { display:inline-flex; align-items:center; gap:4px; padding:6px 14px; border-radius:999px; background:rgba(255,255,255,.75); backdrop-filter:blur(8px); border:1px solid rgba(148,163,184,.30); font-size:12px; font-weight:700; color:rgb(var(--peak-ink)); transition:background .2s ease, transform .2s ease, box-shadow .2s ease; }
+  .hero-pill:hover { background:#fff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(42,62,140,.10); }
+
+  /* Hero orbs */
+  .hero-bg-orb { position:absolute; border-radius:9999px; filter:blur(80px); pointer-events:none; z-index:0; }
+  .orb1 { width:600px; height:600px; top:-200px; left:-150px; background:radial-gradient(circle,rgba(76,181,245,.18) 0%,transparent 70%); animation:orbFloat 8s ease-in-out infinite; }
+  .orb2 { width:400px; height:400px; top:100px; right:-80px; background:radial-gradient(circle,rgba(34,197,94,.12) 0%,transparent 70%); animation:orbFloat 11s ease-in-out infinite reverse; }
+  .orb3 { width:300px; height:300px; bottom:-50px; left:40%; background:radial-gradient(circle,rgba(42,62,140,.10) 0%,transparent 70%); animation:orbFloat 9s ease-in-out infinite 2s; }
+  @keyframes orbFloat { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(20px,-30px) scale(1.05);} }
+
+  /* Marquee logos */
+  @keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .logos-marquee { animation:marquee 30s linear infinite; }
+  .logos-marquee:hover { animation-play-state:paused; }
+  .logo-card { flex-shrink:0; width:150px; height:80px; border-radius:16px; border:1px solid rgba(148,163,184,.35); background:#fff; display:flex; align-items:center; justify-content:center; padding:12px; transition:box-shadow .25s ease, transform .25s ease; }
+  .logo-card:hover { box-shadow:0 8px 24px rgba(42,62,140,0.10); transform:translateY(-2px); }
+  .logo-card img { max-height:44px; max-width:120px; width:auto; filter:grayscale(100%) brightness(0.9) sepia(70%) hue-rotate(195deg) saturate(420%) contrast(1.05); transition:filter .25s ease; }
+  .logo-card:hover img { filter:grayscale(0%) brightness(1); }
+
+  /* Formulario contacto */
+  /* Pills de servicio en formulario */
+  .servicio-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 7px 14px; border-radius: 999px; font-size: 12px; font-weight: 700;
+    border: 2px solid rgba(42,62,140,0.15);
+    background: rgba(42,62,140,0.04);
+    color: rgb(42,62,140);
+    cursor: pointer;
+    transition: all .2s ease;
+  }
+  .servicio-pill:hover { border-color:rgba(42,62,140,0.35); background:rgba(42,62,140,0.08); transform:translateY(-1px); }
+  .servicio-pill.activo { background:rgb(42,62,140); border-color:rgb(42,62,140); color:#fff; box-shadow:0 6px 16px rgba(42,62,140,0.25); transform:translateY(-1px); }
+
+  .contact-label { font-size:13px; font-weight:700; color:rgb(15,23,42); display:block; }
+  .contact-input { display:block; width:100%; border:2px solid rgba(42,62,140,0.15); background:rgba(76,181,245,0.04); border-radius:14px; padding:12px 16px; font-size:15px; color:rgb(15,23,42); transition:border-color .2s ease, box-shadow .2s ease, background .2s ease; outline:none; }
+  .contact-input::placeholder { color:rgba(15,23,42,0.38); }
+  .contact-input:focus { border-color:rgb(76,181,245); box-shadow:0 0 0 4px rgba(76,181,245,0.15); background:#fff; }
+
+  /* Touch scroll para carruseles en móvil */
+  .carousel { overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .carousel::-webkit-scrollbar { display: none; }
+  .carousel-slide { scroll-snap-align: start; flex-shrink: 0; }
+
+  /* Inputs más grandes para touch (mínimo 44px) */
+  .contact-input { min-height: 48px; font-size: 16px !important; } /* 16px evita zoom en iOS */
+  .servicio-pill { min-height: 40px; }
+  .btn { min-height: 44px; }
+
+  /* Fix iOS safari bottom bar */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    footer { padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
+  }
+
+  /* Carrusel servicios mejorado */
+  .carousel-slide{ position:relative; overflow:hidden; border-radius:18px; }
+  .carousel-bg{ position:absolute; inset:0; background-size:cover; background-position:center; transform:scale(1.12); filter:blur(28px) saturate(1.1); opacity:.55; }
+  .carousel-shade{ position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(255,255,255,.10),rgba(255,255,255,.65)); }
+  .carousel-img{ position:relative; z-index:2; width:100%; height:100%; object-fit:contain; padding:14px; filter:drop-shadow(0 10px 25px rgba(2,6,23,.12)); }
+  .carousel-zoom{ position:absolute; right:10px; top:10px; z-index:3; display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:9999px; background:rgba(255,255,255,.85); border:1px solid rgba(148,163,184,.5); color:rgb(var(--peak-blue)); box-shadow:0 10px 25px rgba(2,6,23,.12); transition:transform .2s ease, background .2s ease; }
+  .carousel-zoom:hover{ transform:translateY(-1px) scale(1.03); background:rgba(255,255,255,.95); }
+
+  /* === MÓVIL iOS + Android === */
+  * { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+  html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+  
+  /* Touch targets mínimos 44px (Apple HIG) */
+  .btn { min-height: 44px; min-width: 44px; }
+  .social-icon-btn { min-height: 44px; min-width: 44px; }
+  .servicio-pill { min-height: 40px; }
+  .filterBtn { min-height: 40px; }
+  
+  /* Safe area para iPhone con notch/Dynamic Island */
+  header { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+  footer { padding-bottom: calc(env(safe-area-inset-bottom) + 16px); }
+  
+  /* Prevenir zoom en inputs en iOS (font-size mínimo 16px) */
+  input, select, textarea { font-size: 16px !important; }
+  
+  /* Carrusel touch-friendly */
+  .carousel { -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; }
+  .carousel > * { scroll-snap-align: start; }
+  
+  /* Marquee sin problemas en Safari */
+  .logos-marquee { will-change: transform; }
+  
+  /* Animaciones suaves en móvil */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .logos-marquee, .hero-bg-orb { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+  
+  /* Texto legible en móvil pequeño */
+  @media (max-width: 375px) {
+    h1 { font-size: 2.5rem !important; }
+    .hero-pill { font-size: 11px; padding: 5px 10px; }
+  }
+
+
+  /* Language selector */
+  .lang-selector { display:flex; align-items:center; gap:6px; }
+  .lang-btn { display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; border:2px solid transparent; cursor:pointer; transition:all .2s ease; background:transparent; color:rgb(100,116,139); }
+  .lang-btn:hover { background:rgba(42,62,140,.07); color:rgb(42,62,140); }
+  .lang-btn.active { background:rgba(42,62,140,.10); color:rgb(42,62,140); border-color:rgba(42,62,140,.20); }
+  .lang-btn .flag { font-size:16px; line-height:1; }
+  .flag-img{
+  width:16px;
+  height:16px;
+  border-radius:4px;
+  display:inline-block;
+  object-fit:cover;
+  margin-right:6px;
+  vertical-align:middle;
+}
+</style>
+</head>
+<body class="bg-white text-slate-900">
+<header class="fixed top-0 inset-x-0 z-50 border-b border-slate-200/60 bg-white/85 backdrop-blur">
+<div class="mx-auto max-w-6xl px-4 sm:px-6">
+<div class="h-16 flex items-center justify-between">
+<a class="flex items-center gap-3" href="#home">
+<img alt="Agencia Peak" class="h-9 w-auto" decoding="async" loading="eager" onerror="this.style.display='none';" src="assets/peak-logo.png"/>
+<span class="sr-only">Agencia Peak</span>
+</a>
+<nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-700">
+<a class="hover:text-[rgb(var(--peak-blue))]" href="#home">Home</a>
+<a class="hover:text-[rgb(var(--peak-blue))]" href="#nosotros">About</a>
+<a class="hover:text-[rgb(var(--peak-blue))]" href="#servicios">Services</a>
+<a class="hover:text-[rgb(var(--peak-blue))]" href="#experiencia">Experience</a>
+<a class="hover:text-[rgb(var(--peak-blue))]" href="#contacto">Contact</a>
+</nav>
+<div class="hidden md:flex items-center gap-3">
+<div class="lang-selector ml-1">
+<a class="lang-btn" href="index.html" title="Español">
+<img alt="Chile" class="flag-img" src="./assets/banderas/Chile.png"/> ES
+          </a>
+<a class="lang-btn active" href="index_en.html" title="English">
+<img alt="USA" class="flag-img" src="./assets/banderas/USA.png"/> EN
+          </a>
+<a class="lang-btn" href="index_pt.html" title="Português">
+<img alt="Brasil" class="flag-img" src="./assets/banderas/Brasil.png"/> PT
+          </a>
+</div>
+<button aria-label="Abrir menú" class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl border border-slate-200 text-slate-800 hover:bg-slate-50" id="menuBtn">☰</button>
+</div>
+<div class="md:hidden hidden pb-4" id="mobileMenu">
+<div class="flex flex-col gap-2 text-sm font-semibold text-slate-700">
+<a class="py-2" href="#home">Home</a>
+<a class="py-2" href="#nosotros">About</a>
+<a class="py-2" href="#servicios">Services</a>
+<a class="py-2" href="#experiencia">Experience</a>
+<a class="py-2" href="#contacto">Contact</a>
+<div class="pt-2 flex gap-2 justify-center">
+<a class="lang-btn" href="index.html" title="Español">
+<img alt="Chile" class="flag-img" src="./assets/banderas/Chile.png"/> ES
+          </a>
+<a class="lang-btn active" href="index_en.html" title="English">
+<img alt="USA" class="flag-img" src="./assets/banderas/USA.png"/> EN
+          </a>
+<a class="lang-btn" href="index_pt.html" title="Português">
+<img alt="Brasil" class="flag-img" src="./assets/banderas/Brasil.png"/> PT
+          </a>
+</div>
+<div class="pt-2 flex gap-2">
+<a class="btn btn-dark w-full" href="#contacto">Let's talk</a>
+<a class="btn w-full" href="https://wa.me/c/56999390680" rel="noopener noreferrer" style="background:#25D366;color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.28);" target="_blank"><svg fill="white" height="16" style="display:inline;vertical-align:middle;margin-right:5px;flex-shrink:0" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.26-1.24A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.9 13.4c-.22.62-1.3 1.2-1.79 1.27-.46.06-1.04.09-1.68-.1-.39-.12-.88-.28-1.52-.56-2.67-1.14-4.41-3.85-4.54-4.03-.13-.18-1.04-1.38-1.04-2.64 0-1.26.66-1.88.9-2.13.22-.25.49-.31.65-.31h.47c.15 0 .35-.06.55.42l.76 1.96c.06.16.1.35.01.53l-.3.47-.44.5c-.16.16-.33.33-.14.65.18.31.81 1.34 1.74 2.17 1.2 1.07 2.2 1.4 2.52 1.55.3.15.49.13.67-.08l.9-1.06c.18-.22.36-.18.6-.11l2.01.95c.24.11.4.17.44.26.05.11.05.58-.16 1.2z"></path></svg>View catalog</a>
+</div>
+</div>
+</div>
+</div>
+</div></header>
+<div class="h-16"></div>
+<section class="relative overflow-hidden" id="home">
+<div class="hero-bg-orb orb1"></div>
+<div class="hero-bg-orb orb2"></div>
+<div class="hero-bg-orb orb3"></div>
+<div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 pt-16 pb-14 sm:pt-24 sm:pb-20">
+<div class="reveal flex justify-center sm:justify-start mb-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white/80 backdrop-blur text-xs font-bold text-slate-700 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background:rgb(var(--peak-green));"></span>
+<span class="relative inline-flex rounded-full h-2 w-2" style="background:rgb(var(--peak-green));"></span>
+</span>
+          Agencia chilena · Periodistas + estrategas · +30 marcas
+        </div>
+</div>
+<div class="reveal">
+<h1 class="font-extrabold tracking-tight leading-none text-center sm:text-left">
+<span class="block text-5xl sm:text-7xl lg:text-8xl" style="color:rgb(var(--peak-blue));">YOUR BRAND</span>
+<span class="block text-5xl sm:text-7xl lg:text-8xl mt-1" style="background:linear-gradient(90deg,rgb(var(--peak-green)),rgb(var(--peak-sky)));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">AT ITS PEAK.</span>
+</h1>
+<p class="mt-7 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto sm:mx-0 leading-relaxed text-center sm:text-left">
+          Llevamos más de 15 años conectando marcas con medios, talentos e influencers.<br class="hidden sm:block"/>
+<strong class="text-slate-800">Hasbro, Canal 13, Entel, TNT Sports and 30+ brands already trust us.</strong>
+</p>
+<div class="mt-8 flex flex-wrap gap-3 justify-center sm:justify-start">
+<a class="btn btn-primary text-base px-6 py-3" href="#contacto">🚀  I want to work with Peak</a>
+<a class="btn btn-secondary text-base px-6 py-3" href="#servicios">See what we do</a>
+<a class="btn text-base px-6 py-3" href="https://wa.me/message/Y5ZXWRTUWUYRI1" rel="noopener noreferrer" style="background:#25D366;color:#fff;box-shadow:0 12px 24px rgba(37,211,102,.22);" target="_blank">
+<svg fill="white" height="18" style="display:inline;vertical-align:middle;margin-right:6px;" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.26-1.24A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.9 13.4c-.22.62-1.3 1.2-1.79 1.27-.46.06-1.04.09-1.68-.1-.39-.12-.88-.28-1.52-.56-2.67-1.14-4.41-3.85-4.54-4.03-.13-.18-1.04-1.38-1.04-2.64 0-1.26.66-1.88.9-2.13.22-.25.49-.31.65-.31h.47c.15 0 .35-.06.55.42l.76 1.96c.06.16.1.35.01.53l-.3.47-.44.5c-.16.16-.33.33-.14.65.18.31.81 1.34 1.74 2.17 1.2 1.07 2.2 1.4 2.52 1.55.3.15.49.13.67-.08l.9-1.06c.18-.22.36-.18.6-.11l2.01.95c.24.11.4.17.44.26.05.11.05.58-.16 1.2z"></path></svg>WhatsApp
+          </a>
+</div>
+<div class="mt-10 flex flex-wrap gap-2 justify-center sm:justify-start">
+<span class="hero-pill">📣 PR &amp; Medios</span>
+<span class="hero-pill">🤳 Influencers</span>
+<span class="hero-pill">🌟 Talent Booking</span>
+<span class="hero-pill">🎤 Producción Eventos</span>
+<span class="hero-pill">🎬 Streaming</span>
+<span class="hero-pill">⚽ Marketing Deportivo</span>
+<span class="hero-pill">📚 Libros &amp; Sponsors</span>
+</div>
+</div>
+<div class="reveal mt-14 pt-8 border-t border-slate-200/60">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest text-center sm:text-left mb-5">Brands that trusted us</p>
+<div class="flex flex-wrap gap-x-8 gap-y-3 items-center justify-center sm:justify-start text-sm font-bold text-slate-400">
+<span class="hover:text-slate-600 transition-colors cursor-default">Canal 13</span><span class="text-slate-200">·</span>
+<span class="hover:text-slate-600 transition-colors cursor-default">Chilevisión</span><span class="text-slate-200">·</span>
+<span class="hover:text-slate-600 transition-colors cursor-default">Entel</span><span class="text-slate-200">·</span>
+<span class="hover:text-slate-600 transition-colors cursor-default">Mega</span><span class="text-slate-200">·</span>
+<span class="hover:text-slate-600 transition-colors cursor-default">Hasbro</span><span class="text-slate-200">·</span>
+<span class="hover:text-slate-600 transition-colors cursor-default">ANFP</span><span class="text-slate-200">·</span>
+<span class="hover:text-slate-600 transition-colors cursor-default">Claro</span><span class="text-slate-200">·</span>
+<span class="hover:text-slate-600 transition-colors cursor-default">National Geographic</span>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-20" style="background:linear-gradient(180deg,#fff 0%,rgba(76,181,245,0.04) 100%);">
+<div class="mx-auto max-w-6xl px-4 sm:px-6">
+<!-- Header centrado -->
+<div class="reveal text-center max-w-2xl mx-auto mb-12">
+<h2 class="text-3xl sm:text-4xl font-extrabold"><span class="text-[rgb(var(--peak-blue))]">What</span> hacemos</h2>
+<div class="mt-2 mx-auto h-1.5 w-16 rounded-full" style="background:rgba(var(--peak-sky),.4)"></div>
+<p class="mt-6 text-slate-600 leading-relaxed">We have the contacts, the strategy and the team to execute. We don’t promise what we can’t deliver — but we do know how to make your brand show up where it needs to.</p>
+<p class="mt-2 text-sm text-slate-400">Hasbro, Canal 13, Entel, TNT Sports, Directv, Colgate and 30+ brands have already experienced it.</p>
+</div>
+<!-- 4 cards -->
+<div class="grid sm:grid-cols-2 gap-6 mb-8">
+<div class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-5 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(42,62,140,.08),rgba(76,181,245,.10))">
+<span class="text-3xl">📣</span>
+<div>
+<p class="font-extrabold text-slate-900 text-base leading-tight">PR &amp; Media Relations</p>
+<p class="text-xs text-slate-500 mt-0.5">Your brand in the public conversation</p>
+</div>
+</div>
+<div class="p-6">
+<p class="text-sm text-slate-600 leading-relaxed mb-4">We make your brand show up where it should: TV, radio, digital and print press. We don’t just get coverage — we manage what’s said, how and when.</p>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> PR corporativo y vocerías</div>
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Coordinación con medios nacionales</div>
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Gestión de reputación de marca</div>
+</div>
+</div>
+</div>
+<div class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-5 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(196,181,253,.12))">
+<span class="text-3xl">🤳</span>
+<div>
+<p class="font-extrabold text-slate-900 text-base leading-tight">Influencer Marketing</p>
+<p class="text-xs text-slate-500 mt-0.5">The right voices for your brand</p>
+</div>
+</div>
+<div class="p-6">
+<p class="text-sm text-slate-600 leading-relaxed mb-4">We don’t work with just any influencer — we work with the right one for your brand. Strategic casting, direct negotiation and real performance tracking.</p>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Convocatoria y casting estratégico</div>
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Negociación y coordinación</div>
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Campañas y lanzamientos</div>
+</div>
+</div>
+</div>
+<div class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-5 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(234,179,8,.08),rgba(253,224,71,.12))">
+<span class="text-3xl">🌟</span>
+<div>
+<p class="font-extrabold text-slate-900 text-base leading-tight">Talent Booking &amp; Management</p>
+<p class="text-xs text-slate-500 mt-0.5">The perfect face for every campaign</p>
+</div>
+</div>
+<div class="p-6">
+<p class="text-sm text-slate-600 leading-relaxed mb-4">We represent and source talent for TV, advertising and social media. We negotiate, coordinate and deliver smoothly so you can focus on the outcome.</p>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Booking de rostros y figuras públicas</div>
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Gestión de contratos y producción</div>
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Entregables a tiempo, siempre</div>
+</div>
+</div>
+</div>
+<div class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-5 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(134,239,172,.12))">
+<span class="text-3xl">🎤</span>
+<div>
+<p class="font-extrabold text-slate-900 text-base leading-tight">Event Production</p>
+<p class="text-xs text-slate-500 mt-0.5">Experiences people remember and share</p>
+</div>
+</div>
+<div class="p-6">
+<p class="text-sm text-slate-600 leading-relaxed mb-4">From press conferences to launches with live shows. We handle logistics, hosting and end-to-end production so everything runs perfectly.</p>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Planificación y logística completa</div>
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Show artístico y animación en vivo</div>
+<div class="flex items-center gap-2 text-sm text-slate-700"><span style="color:rgb(var(--peak-green))">✓</span> Convocatoria de medios e influencers</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA -->
+<div class="reveal text-center">
+<a class="btn btn-primary px-8 py-3 text-base" href="#servicios">See all services →</a>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-20 bg-slate-50/60 border-y border-slate-200/60" id="nosotros">
+<div class="mx-auto max-w-6xl px-4 sm:px-6">
+<!-- Header -->
+<div class="reveal text-center max-w-2xl mx-auto mb-12">
+<h2 class="text-3xl sm:text-4xl font-extrabold"><span class="text-[rgb(var(--peak-blue))]">Who</span> somos</h2>
+<div class="mt-2 mx-auto h-1.5 w-16 rounded-full" style="background:rgba(var(--peak-sky),.4)"></div>
+<p class="mt-6 text-slate-600 leading-relaxed">We’re journalists, strategists and agents with 15+ years in the media. We don’t subcontract: we do the work, we know the people, and we deliver results.</p>
+</div>
+<!-- Stats -->
+<div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+<div class="rounded-3xl bg-white border border-slate-200/70 shadow-sm p-5 text-center">
+<p class="text-3xl font-extrabold" style="color:rgb(var(--peak-blue))">+10</p>
+<p class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wide">Years of experience</p>
+</div>
+<div class="rounded-3xl bg-white border border-slate-200/70 shadow-sm p-5 text-center">
+<p class="text-3xl font-extrabold" style="color:rgb(var(--peak-green))">+30</p>
+<p class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wide">Brands served</p>
+</div>
+<div class="rounded-3xl bg-white border border-slate-200/70 shadow-sm p-5 text-center">
+<p class="text-3xl font-extrabold" style="color:rgb(var(--peak-blue))">9</p>
+<p class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wide">Specialized services</p>
+</div>
+<div class="rounded-3xl bg-white border border-slate-200/70 shadow-sm p-5 text-center">
+<p class="text-3xl font-extrabold" style="color:rgb(var(--peak-red))">100%</p>
+<p class="text-xs font-bold text-slate-500 mt-1 uppercase tracking-wide">Focus on results</p>
+</div>
+</div>
+<!-- Team -->
+<div class="grid sm:grid-cols-2 gap-6 mb-6">
+<div class="reveal rounded-3xl border border-slate-200/70 bg-white p-7 shadow-sm">
+<div class="flex items-center gap-4 mb-4">
+<div class="h-14 w-14 rounded-2xl flex items-center justify-center text-2xl font-extrabold text-white flex-shrink-0" style="background:linear-gradient(135deg,rgb(var(--peak-red)),rgb(225,100,130))">M</div>
+<div>
+<p class="font-extrabold text-slate-900 text-lg leading-tight">Mechita Moreno</p>
+<span class="inline-block mt-1 text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(var(--peak-red),.10);color:rgb(var(--peak-red))">Partner &amp; Director</span>
+</div>
+</div>
+<p class="text-sm text-slate-600 leading-relaxed">Journalist and audiovisual communicator with 15+ years at Canal 13 and Chilevisión. Founding partner of Peak and talent agent for TV, advertising and social media. She knows everyone — and that’s worth more than any deck.</p>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-semibold">PR &amp; Medios</span>
+<span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-semibold">Influencers</span>
+<span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-semibold">Campañas</span>
+</div>
+</div>
+<div class="reveal rounded-3xl border border-slate-200/70 bg-white p-7 shadow-sm">
+<div class="flex items-center gap-4 mb-4">
+<div class="h-14 w-14 rounded-2xl flex items-center justify-center text-2xl font-extrabold text-white flex-shrink-0" style="background:linear-gradient(135deg,rgb(var(--peak-blue)),rgb(76,181,245))">C</div>
+<div>
+<p class="font-extrabold text-slate-900 text-lg leading-tight">Cristián Barra</p>
+<span class="inline-block mt-1 text-xs font-bold px-3 py-1 rounded-full" style="background:rgba(var(--peak-blue),.10);color:rgb(var(--peak-blue))">Partner</span>
+</div>
+</div>
+<p class="text-sm text-slate-600 leading-relaxed">Business Engineer with experience at multinationals like McDonald's and Walmart. He ensures every campaign has clear goals, real metrics and execution that leaves nothing to chance.</p>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-semibold">Estrategia</span>
+<span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-semibold">Commercial management</span>
+<span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full font-semibold">Planning</span>
+</div>
+</div>
+</div>
+<!-- CTA catálogo -->
+<div class="reveal rounded-3xl p-6 text-white flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4" style="background:linear-gradient(135deg,rgb(var(--peak-blue)),rgb(var(--peak-sky)))">
+<div>
+<p class="font-extrabold text-lg">📋 Want to see real work and talent?</p>
+<p class="text-sm opacity-80 mt-1">Our WhatsApp catalog has photos, talent and real examples of our work.</p>
+</div>
+<div class="flex gap-3 flex-shrink-0">
+<a class="btn font-bold" href="https://wa.me/c/56999390680" rel="noopener noreferrer" style="background:#25D366;color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.35);" target="_blank"><svg fill="white" height="16" style="display:inline;vertical-align:middle;margin-right:5px;flex-shrink:0" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.26-1.24A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.9 13.4c-.22.62-1.3 1.2-1.79 1.27-.46.06-1.04.09-1.68-.1-.39-.12-.88-.28-1.52-.56-2.67-1.14-4.41-3.85-4.54-4.03-.13-.18-1.04-1.38-1.04-2.64 0-1.26.66-1.88.9-2.13.22-.25.49-.31.65-.31h.47c.15 0 .35-.06.55.42l.76 1.96c.06.16.1.35.01.53l-.3.47-.44.5c-.16.16-.33.33-.14.65.18.31.81 1.34 1.74 2.17 1.2 1.07 2.2 1.4 2.52 1.55.3.15.49.13.67-.08l.9-1.06c.18-.22.36-.18.6-.11l2.01.95c.24.11.4.17.44.26.05.11.05.58-.16 1.2z"></path></svg>View catalog</a>
+<a class="btn font-bold" href="#contacto" style="background:#fff;color:rgb(var(--peak-blue))">Request a quote</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-14 sm:py-16" id="servicios">
+<div class="mx-auto max-w-6xl px-4 sm:px-6">
+<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 reveal">
+<div>
+<h2 class="text-3xl sm:text-4xl font-extrabold peak-underline"><span class="text-[rgb(var(--peak-blue))]">Services</span> del catálogo</h2>
+<p class="mt-6 text-slate-700 max-w-2xl">
+            Servicios diseñados para potenciar visibilidad, reputación y resultados. Selecciona un servicio para ver ejemplos reales.</p>
+</div>
+<a class="btn" href="https://wa.me/c/56999390680" rel="noopener noreferrer" style="background:#25D366;color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.28);" target="_blank"><svg fill="white" height="16" style="display:inline;vertical-align:middle;margin-right:5px;flex-shrink:0" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.26-1.24A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.9 13.4c-.22.62-1.3 1.2-1.79 1.27-.46.06-1.04.09-1.68-.1-.39-.12-.88-.28-1.52-.56-2.67-1.14-4.41-3.85-4.54-4.03-.13-.18-1.04-1.38-1.04-2.64 0-1.26.66-1.88.9-2.13.22-.25.49-.31.65-.31h.47c.15 0 .35-.06.55.42l.76 1.96c.06.16.1.35.01.53l-.3.47-.44.5c-.16.16-.33.33-.14.65.18.31.81 1.34 1.74 2.17 1.2 1.07 2.2 1.4 2.52 1.55.3.15.49.13.67-.08l.9-1.06c.18-.22.36-.18.6-.11l2.01.95c.24.11.4.17.44.26.05.11.05.58-.16 1.2z"></path></svg>View catalog on WhatsApp</a>
+</div>
+<div class="mt-10 grid lg:grid-cols-2 gap-6">
+<article class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(42,62,140,.08),rgba(76,181,245,.10))">
+<span class="text-2xl">📣</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Communications / PR</h3><p class="text-xs text-slate-500">Your brand in the media that matters</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(42,62,140,.12);color:rgb(42,62,140)">PR &amp; Medios</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">We manage presence on TV, radio and press. Spokespeople, relationships and brand reputation with journalists and national media.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="10" data-ext="jpg" data-slug="gestiontvradio&amp;prensa"></div>
+</article>
+<article class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(225,29,72,.07),rgba(251,113,133,.10))">
+<span class="text-2xl">🎯</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Marketing &amp; Branded Content</h3><p class="text-xs text-slate-500">Content that connects with real audiences</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(225,29,72,.10);color:rgb(225,29,72)">Marketing</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">We design campaigns where content is the vehicle. Talent and influencers integrated naturally into your brand narrative.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="10" data-ext="jpg" data-slug="influencersrrhh"></div>
+</article>
+<article class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(168,85,247,.08),rgba(196,181,253,.12))">
+<span class="text-2xl">🤳</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Influencer Marketing</h3><p class="text-xs text-slate-500">The right voices for your brand</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(168,85,247,.12);color:rgb(124,58,237)">Influencers</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">Strategic casting, negotiation and tracking. We connect your brand with influencers whose audiences match and who drive measurable results.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="10" data-ext="jpg" data-slug="influencerseventosylanzamientos"></div>
+</article>
+<article class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(234,179,8,.08),rgba(253,224,71,.12))">
+<span class="text-2xl">🌟</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Talent Booking &amp; Management</h3><p class="text-xs text-slate-500">The perfect face for every campaign</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(234,179,8,.12);color:rgb(161,98,7)">Talentos</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">Representation and booking for TV, advertising and social media. We negotiate, coordinate and deliver smoothly.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="9" data-ext="jpg" data-slug="bookingartistasypublicidad"></div>
+</article>
+<article class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(236,72,153,.08),rgba(251,182,206,.12))">
+<span class="text-2xl">🎉</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Influencers: Events &amp; Launches</h3><p class="text-xs text-slate-500">Real buzz in every activation</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(236,72,153,.10);color:rgb(190,24,93)">Eventos</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">We bring in the right influencers and talent for your launch or event. Social presence that amplifies impact before, during and after.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="8" data-ext="jpg" data-slug="animadorestvparaeventos"></div>
+</article>
+<article class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(34,197,94,.08),rgba(134,239,172,.12))">
+<span class="text-2xl">🎤</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Event Production</h3><p class="text-xs text-slate-500">Experiences people remember and share</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(34,197,94,.12);color:rgb(21,128,61)">Producción</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">Desde conferencias de prensa hasta lanzamientos con show artístico. Logística, animación y producción integral.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="9" data-ext="jpg" data-slug="produccioneventos"></div>
+</article>
+<article class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(239,68,68,.08),rgba(252,165,165,.12))">
+<span class="text-2xl">🎬</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Streaming / YouTube Production</h3><p class="text-xs text-slate-500">High-impact digital content</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(239,68,68,.10);color:rgb(185,28,28)">Digital</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">We produce shows, live broadcasts and content for YouTube. From idea to publication, everything with professional quality.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="10" data-ext="jpg" data-slug="programasyyoutubelive"></div>
+</article>
+<article class="reveal rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(14,165,233,.08),rgba(125,211,252,.12))">
+<span class="text-2xl">⚽</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Sports Marketing</h3><p class="text-xs text-slate-500">Sport passion at the service of your brand</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(14,165,233,.12);color:rgb(3,105,161)">Deporte</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">Promotion of sporting events, athletes and teams. Partnerships with ANFP, Primera B and other Chilean sports institutions.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="10" data-ext="jpg" data-slug="marketingdeportivo"></div>
+</article>
+<article class="reveal lg:col-span-2 rounded-3xl overflow-hidden border border-slate-200/70 bg-white shadow-sm hover:shadow-lg transition-shadow duration-300">
+<div class="px-6 py-4 flex items-center gap-3" style="background:linear-gradient(90deg,rgba(100,116,139,.08),rgba(203,213,225,.12))">
+<span class="text-2xl">📚</span>
+<div class="flex-1"><h3 class="font-extrabold text-slate-900 text-lg">Books: Press &amp; Sponsors</h3><p class="text-xs text-slate-500">Editorial launches with media impact</p></div>
+<span class="text-xs font-bold px-3 py-1 rounded-full flex-shrink-0" style="background:rgba(100,116,139,.12);color:rgb(51,65,85)">Editorial</span>
+</div>
+<div class="px-6 pt-3 pb-1"><p class="text-sm text-slate-600">We manage sponsors, media attendance and full coordination for book launches. Your editorial launch with the visibility it deserves.</p></div>
+<div class="px-4 pb-4 pt-2 carousel service-carousel" data-count="5" data-ext="jpg" data-slug="librosprensaysponsors"></div>
+</article>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-20 bg-slate-50/60 border-y border-slate-200/60" id="experiencia">
+<div class="mx-auto max-w-6xl px-4 sm:px-6">
+<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 reveal">
+<div>
+<h2 class="text-3xl sm:text-4xl font-extrabold peak-underline"><span class="text-[rgb(var(--peak-blue))]">Experience</span> que respalda</h2>
+<p class="mt-6 text-slate-600 max-w-xl">More than 30 national and international brands have trusted Peak for their campaigns, events and communications.</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<button aria-pressed="true" class="filterBtn px-4 py-2 rounded-xl border text-sm font-semibold" data-filter="all" type="button">All</button>
+<button aria-pressed="false" class="filterBtn px-4 py-2 rounded-xl border text-sm font-semibold" data-filter="medios" type="button">Media</button>
+<button aria-pressed="false" class="filterBtn px-4 py-2 rounded-xl border text-sm font-semibold" data-filter="retail" type="button">Retail</button>
+<button aria-pressed="false" class="filterBtn px-4 py-2 rounded-xl border text-sm font-semibold" data-filter="telecom" type="button">Telecom</button>
+<button aria-pressed="false" class="filterBtn px-4 py-2 rounded-xl border text-sm font-semibold" data-filter="otros" type="button">Other</button>
+</div>
+</div>
+<div class="mt-10 overflow-hidden" id="logosMarqueeWrapper">
+<div aria-label="Logos de experiencia" class="logos-marquee flex gap-6 w-max" id="logosMarquee"></div>
+</div>
+<div class="hidden" id="logosGrid"></div>
+</div>
+</section>
+<section class="py-16 sm:py-20 relative overflow-hidden" id="contacto" style="background:linear-gradient(160deg,rgba(42,62,140,0.03) 0%,#fff 40%,rgba(76,181,245,0.05) 100%);">
+<div class="pointer-events-none absolute -bottom-32 -right-32 w-96 h-96 rounded-full" style="background:radial-gradient(circle,rgba(76,181,245,.10) 0%,transparent 70%);filter:blur(60px);"></div>
+<div class="pointer-events-none absolute -top-20 -left-20 w-72 h-72 rounded-full" style="background:radial-gradient(circle,rgba(34,197,94,.08) 0%,transparent 70%);filter:blur(50px);"></div>
+<div class="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
+<div class="reveal text-center max-w-xl mx-auto mb-12">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-4" style="background:rgba(34,197,94,.12);color:rgb(21,128,61);">
+<span class="h-2 w-2 rounded-full" style="background:rgb(34,197,94);"></span>
+          ✅ Respondemos en menos de 24 hrs
+        </span>
+<h2 class="text-3xl sm:text-4xl font-extrabold"><span class="text-[rgb(var(--peak-blue))]">Let’s talk</span> sobre tu proyecto</h2>
+<p class="mt-4 text-slate-600 text-base leading-relaxed">Tell us what you need and we’ll build a tailored proposal. For 15+ years we’ve helped brands get where they need to be.</p>
+</div>
+<div class="grid lg:grid-cols-12 gap-8 items-start">
+<div class="lg:col-span-4 flex flex-col gap-5">
+<div class="reveal rounded-3xl p-6 text-white" style="background:linear-gradient(135deg,rgb(42,62,140),rgb(76,181,245));">
+<p class="text-xs font-bold uppercase tracking-widest opacity-70 mb-1">Fast response</p>
+<p class="text-xl font-extrabold leading-tight mb-1">Let’s talk right now!</p>
+<p class="text-sm opacity-80 mb-5">Most of our best campaigns started with a simple message. Will yours be next?</p>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl font-bold text-sm transition-transform hover:scale-105" href="https://wa.me/message/Y5ZXWRTUWUYRI1" rel="noopener noreferrer" style="background:#25D366;color:#fff;box-shadow:0 8px 20px rgba(37,211,102,.35);" target="_blank">
+<svg fill="white" height="18" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.43 1.27 4.88L2 22l5.26-1.24A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.9 13.4c-.22.62-1.3 1.2-1.79 1.27-.46.06-1.04.09-1.68-.1-.39-.12-.88-.28-1.52-.56-2.67-1.14-4.41-3.85-4.54-4.03-.13-.18-1.04-1.38-1.04-2.64 0-1.26.66-1.88.9-2.13.22-.25.49-.31.65-.31h.47c.15 0 .35-.06.55.42l.76 1.96c.06.16.1.35.01.53l-.3.47-.44.5c-.16.16-.33.33-.14.65.18.31.81 1.34 1.74 2.17 1.2 1.07 2.2 1.4 2.52 1.55.3.15.49.13.67-.08l.9-1.06c.18-.22.36-.18.6-.11l2.01.95c.24.11.4.17.44.26.05.11.05.58-.16 1.2z"></path></svg>
+              Escribir ahora
+            </a>
+</div>
+<div class="reveal rounded-3xl border border-slate-200/70 bg-white shadow-sm p-6 space-y-4">
+<p class="font-extrabold text-slate-900 text-sm">Contact details</p>
+<div class="flex items-start gap-3"><span class="text-xl">📱</span><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wide">WhatsApp</p><p class="text-sm font-semibold text-slate-800">+56 9 9939 0680</p></div></div>
+<div class="flex items-start gap-3"><span class="text-xl">✉️</span><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wide">Emails</p><p class="text-sm text-slate-700"><span class="email-reveal" data-d="agenciapeak.com" data-u="comunicaciones"></span></p><p class="text-sm text-slate-700"><span class="email-reveal" data-d="agenciapeak.com" data-u="prensa"></span></p><p class="text-sm text-slate-700"><span class="email-reveal" data-d="agenciapeak.com" data-u="booking"></span></p></div></div>
+<div class="flex items-start gap-3"><span class="text-xl">🌐</span><div><p class="text-xs font-bold text-slate-400 uppercase tracking-wide">Web</p><p class="text-sm font-semibold text-slate-800">agenciapeak.com</p></div></div>
+<div class="flex items-start gap-3"><span class="text-xl">📲</span>
+<div><p class="text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Social media</p>
+<div class="flex gap-2 flex-wrap">
+<a aria-label="Instagram" class="social-icon-btn" href="https://www.instagram.com/peakcl?igsh=MWsyeXIyMmd2eWNhdg==" rel="noopener noreferrer" target="_blank"><svg fill="none" height="36" viewbox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="url(#igc)" r="18"></circle><defs><radialgradient cx="30%" cy="107%" id="igc" r="125%"><stop offset="0%" stop-color="#fdf497"></stop><stop offset="45%" stop-color="#fd5949"></stop><stop offset="60%" stop-color="#d6249f"></stop><stop offset="90%" stop-color="#285AEB"></stop></radialgradient></defs><rect fill="none" height="14" rx="4.5" stroke="white" stroke-width="1.8" width="14" x="11" y="11"></rect><circle cx="18" cy="18" fill="none" r="3.5" stroke="white" stroke-width="1.8"></circle><circle cx="22.2" cy="13.8" fill="white" r="1"></circle></svg></a>
+<a aria-label="Facebook" class="social-icon-btn" href="https://www.facebook.com/share/1ApLw7Azns/?mibextid=wwXIfr" rel="noopener noreferrer" target="_blank"><svg fill="none" height="36" viewbox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="#1877F2" r="18"></circle><path d="M23.5 18H20v-2c0-.83.17-1.5 1.5-1.5H23.5V11.1A22.6 22.6 0 0 0 21.1 11c-2.45 0-4.1 1.49-4.1 4.24V18H14v3.5h3v9h3.5v-9H23l.5-3.5z" fill="white"></path></svg></a>
+<a aria-label="X" class="social-icon-btn" href="https://x.com/peakcl?s=21" rel="noopener noreferrer" target="_blank"><svg fill="none" height="36" viewbox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="#000" r="18"></circle><path d="M20.29 17.15 26.5 10h-1.47l-5.38 6.11L15.1 10H10l6.52 9.28L10 26h1.47l5.7-6.47L21.9 26H27l-6.71-8.85zm-2.02 2.29-.66-.93-5.25-7.35h2.26l4.24 5.94.66.93 5.52 7.72h-2.26l-4.51-6.31z" fill="white"></path></svg></a>
+<a aria-label="WhatsApp" class="social-icon-btn" href="https://wa.me/message/Y5ZXWRTUWUYRI1" rel="noopener noreferrer" target="_blank"><svg fill="none" height="36" viewbox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="#25D366" r="18"></circle><path d="M18 10a8 8 0 0 0-6.93 12l-1.07 4 4.1-1.07A8 8 0 1 0 18 10zm3.9 10.85c-.16.46-1 .9-1.38.95-.35.05-.8.07-1.3-.08-.3-.1-.68-.22-1.17-.44-2.06-.88-3.4-2.97-3.5-3.1-.1-.14-.8-1.07-.8-2.04s.51-1.45.7-1.65c.18-.2.4-.25.53-.25h.38c.12 0 .29-.05.45.34l.64 1.6c.05.13.08.28.01.42l-.24.36-.36.4c-.12.12-.25.25-.1.5.14.24.63 1.04 1.35 1.69.93.83 1.71 1.09 1.96 1.2.24.12.38.1.52-.06l.73-.86c.13-.17.27-.14.45-.08l1.55.73c.18.08.3.13.34.2.04.08.04.44-.11.9z" fill="white"></path></svg></a>
+<a aria-label="LinkedIn" class="social-icon-btn" href="https://www.linkedin.com/company/agencia-peak/" rel="noopener noreferrer" target="_blank"><svg fill="none" height="36" viewbox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="#0A66C2" r="18"></circle><path d="M13.5 15h-3v10h3V15zm-1.5-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm13 11h-3v-5c0-1.1-.9-2-2-2s-2 .9-2 2v5h-3V15h3v1.35A4 4 0 0 1 25 18.9V25z" fill="white"></path></svg></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 reveal">
+<div class="rounded-3xl border border-slate-200/70 bg-white shadow-md p-7 sm:p-8">
+<p class="font-extrabold text-slate-900 text-lg mb-1">Send us your inquiry</p>
+<p class="text-sm text-slate-500 mb-6">Tell us the challenge and we’ll bring 15 years of experience, the contacts and the strategy.</p>
+<form class="space-y-5" id="contactForm" novalidate="">
+<!-- Selector visual de servicio -->
+<div>
+<label class="contact-label mb-3 block">¿Qué servicio te interesa? <span class="text-[rgb(var(--peak-red))]">*</span></label>
+<div class="flex flex-wrap gap-2" id="serviciosPills">
+<button class="servicio-pill" data-servicio="PR &amp; Medios" type="button">📣 PR &amp; Medios</button>
+<button class="servicio-pill" data-servicio="Influencer Marketing" type="button">🤳 Influencers</button>
+<button class="servicio-pill" data-servicio="Talent Booking" type="button">🌟 Talent Booking</button>
+<button class="servicio-pill" data-servicio="Producción Eventos" type="button">🎤 Eventos</button>
+<button class="servicio-pill" data-servicio="Streaming / YouTube" type="button">🎬 Streaming</button>
+<button class="servicio-pill" data-servicio="Marketing Deportivo" type="button">⚽ Deporte</button>
+<button class="servicio-pill" data-servicio="Libros &amp; Sponsors" type="button">📚 Libros</button>
+<button class="servicio-pill" data-servicio="Otro / No sé aún" type="button">💬 Other</button>
+</div>
+<input id="servicioSeleccionado" name="servicio" type="hidden"/>
+</div>
+<div><label class="contact-label" for="nombre">Nombre y Apellido <span class="text-[rgb(var(--peak-red))]">*</span></label><input class="contact-input mt-2" id="nombre" name="nombre" placeholder="Ej: María González" required="" type="text"/></div>
+<div class="grid sm:grid-cols-2 gap-4">
+<div><label class="contact-label" for="empresa">Empresa <span class="text-[rgb(var(--peak-red))]">*</span></label><input class="contact-input mt-2" id="empresa" name="empresa" placeholder="Ej: Mi Empresa" required="" type="text"/></div>
+<div><label class="contact-label" for="cargo">Role/Title</label><input class="contact-input mt-2" id="cargo" name="cargo" placeholder="Ej: Gerente de Marketing" type="text"/></div>
+</div>
+<div class="grid sm:grid-cols-2 gap-4">
+<div><label class="contact-label" for="telefono">Teléfono <span class="text-[rgb(var(--peak-red))]">*</span></label><input class="contact-input mt-2" id="telefono" inputmode="numeric" name="telefono" placeholder="+56 9 xxxx xxxx" required="" type="tel"/></div>
+<div><label class="contact-label" for="email">Email <span class="text-[rgb(var(--peak-red))]">*</span></label><input class="contact-input mt-2" id="email" name="email" placeholder="nombre@empresa.com" required="" type="email"/></div>
+</div>
+<div><label class="contact-label" for="tamano">Tamaño de Empresa <span class="text-[rgb(var(--peak-red))]">*</span></label>
+<select class="contact-input mt-2" id="tamano" name="tamano" required="">
+<option value="">Select an option</option>
+<option>1–10 personas</option><option>11–50 personas</option><option>51–200 personas</option><option>201–1000 personas</option><option>+1000 personas</option>
+</select>
+</div>
+<div><label class="contact-label" for="mensaje">¿Qué necesitas? <span class="text-[rgb(var(--peak-red))]">*</span></label>
+<textarea class="contact-input mt-2" id="mensaje" name="mensaje" placeholder="Cuéntanos el objetivo, timing y cualquier detalle que nos ayude a entender tu proyecto." required="" rows="4"></textarea>
+</div>
+<div class="flex items-center justify-between gap-3 pt-1">
+<p class="text-sm font-semibold" id="formMsg"></p>
+<button class="btn btn-primary px-8 py-3 text-base" id="submitBtn" type="submit">Send inquiry 🚀</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="border-t border-slate-200/60">
+<div class="relative overflow-hidden" style="height:200px;">
+<div class="absolute inset-0 flex items-end justify-center">
+<img alt="" decoding="async" loading="lazy" onerror="this.parentElement.parentElement.style.display='none';" src="assets/city.png" style="width:100%;height:180px;object-fit:contain;object-position:bottom;opacity:.9;"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent"></div>
+</div>
+<div class="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+<div class="grid sm:grid-cols-2 gap-8 items-start">
+<div>
+<p class="font-extrabold text-slate-900 text-lg">Agencia Peak</p>
+<p class="mt-3 text-sm text-slate-500 max-w-sm leading-relaxed">
+            Conectamos marcas con los medios, talentos e influencers que necesitan. Comunicación estratégica, PR, marketing, eventos y producción — todo bajo un mismo techo, con foco total en resultados.
+          </p>
+</div>
+<div class="sm:text-right">
+<p class="font-extrabold text-slate-900">Social</p>
+<div class="mt-3 flex sm:justify-end gap-2 flex-wrap">
+<a aria-label="Facebook" class="social-icon-btn" href="https://www.facebook.com/share/1ApLw7Azns/?mibextid=wwXIfr" rel="noopener noreferrer" target="_blank">
+<svg fill="none" height="40" viewbox="0 0 36 36" width="40" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="#1877F2" r="18"></circle><path d="M23.5 18H20v-2c0-.83.17-1.5 1.5-1.5H23.5V11.1A22.6 22.6 0 0 0 21.1 11c-2.45 0-4.1 1.49-4.1 4.24V18H14v3.5h3v9h3.5v-9H23l.5-3.5z" fill="white"></path></svg>
+</a>
+<a aria-label="X" class="social-icon-btn" href="https://x.com/peakcl?s=21" rel="noopener noreferrer" target="_blank">
+<svg fill="none" height="40" viewbox="0 0 36 36" width="40" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="#000" r="18"></circle><path d="M20.29 17.15 26.5 10h-1.47l-5.38 6.11L15.1 10H10l6.52 9.28L10 26h1.47l5.7-6.47L21.9 26H27l-6.71-8.85zm-2.02 2.29-.66-.93-5.25-7.35h2.26l4.24 5.94.66.93 5.52 7.72h-2.26l-4.51-6.31z" fill="white"></path></svg>
+</a>
+<a aria-label="Instagram" class="social-icon-btn" href="https://www.instagram.com/peakcl?igsh=MWsyeXIyMmd2eWNhdg==" rel="noopener noreferrer" target="_blank">
+<svg fill="none" height="40" viewbox="0 0 36 36" width="40" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="url(#ig-f)" r="18"></circle><defs><radialgradient cx="30%" cy="107%" id="ig-f" r="125%"><stop offset="0%" stop-color="#fdf497"></stop><stop offset="45%" stop-color="#fd5949"></stop><stop offset="60%" stop-color="#d6249f"></stop><stop offset="90%" stop-color="#285AEB"></stop></radialgradient></defs><rect fill="none" height="14" rx="4.5" stroke="white" stroke-width="1.8" width="14" x="11" y="11"></rect><circle cx="18" cy="18" fill="none" r="3.5" stroke="white" stroke-width="1.8"></circle><circle cx="22.2" cy="13.8" fill="white" r="1"></circle></svg>
+</a>
+<a aria-label="WhatsApp" class="social-icon-btn" href="https://wa.me/message/Y5ZXWRTUWUYRI1" rel="noopener noreferrer" target="_blank">
+<svg fill="none" height="40" viewbox="0 0 36 36" width="40" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="#25D366" r="18"></circle><path d="M18 10a8 8 0 0 0-6.93 12l-1.07 4 4.1-1.07A8 8 0 1 0 18 10zm3.9 10.85c-.16.46-1 .9-1.38.95-.35.05-.8.07-1.3-.08-.3-.1-.68-.22-1.17-.44-2.06-.88-3.4-2.97-3.5-3.1-.1-.14-.8-1.07-.8-2.04s.51-1.45.7-1.65c.18-.2.4-.25.53-.25h.38c.12 0 .29-.05.45.34l.64 1.6c.05.13.08.28.01.42l-.24.36-.36.4c-.12.12-.25.25-.1.5.14.24.63 1.04 1.35 1.69.93.83 1.71 1.09 1.96 1.2.24.12.38.1.52-.06l.73-.86c.13-.17.27-.14.45-.08l1.55.73c.18.08.3.13.34.2.04.08.04.44-.11.9z" fill="white"></path></svg>
+</a>
+<a aria-label="LinkedIn" class="social-icon-btn" href="https://www.linkedin.com/company/agencia-peak/" rel="noopener noreferrer" target="_blank">
+<svg fill="none" height="40" viewbox="0 0 36 36" width="40" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" fill="#0A66C2" r="18"></circle><path d="M13.5 15h-3v10h3V15zm-1.5-1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm13 11h-3v-5c0-1.1-.9-2-2-2s-2 .9-2 2v5h-3V15h3v1.35A4 4 0 0 1 25 18.9V25z" fill="white"></path></svg>
+</a>
+</div>
+<p class="mt-4 text-xs text-slate-400">© <span id="year"></span> Agencia Peak. Todos los derechos reservados.</p>
+<p class="mt-1 text-xs text-slate-300">Diseñado y desarrollado por <a class="hover:text-slate-400 transition-colors underline underline-offset-2" href="https://www.nexgensoftware.cl" rel="noopener noreferrer" target="_blank">NexGen Software</a> · <span class="email-reveal hover:text-slate-400 transition-colors underline underline-offset-2" data-d="nexgensoftware.cl" data-u="info"></span></p>
+</div>
+</div>
+</div>
+</footer>
+<script>
+
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    $("#year").textContent = String(new Date().getFullYear());
+
+    const menuBtn = $("#menuBtn");
+    const mobileMenu = $("#mobileMenu");
+    menuBtn?.addEventListener("click", () => mobileMenu?.classList.toggle("hidden"));
+    $$("#mobileMenu a").forEach(a => a.addEventListener("click", () => mobileMenu?.classList.add("hidden")));
+
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); }); }, { threshold: 0.12 });
+    $$(".reveal").forEach(el => io.observe(el));
+
+    function pad2(n){ return String(n).padStart(2, "0"); }
+
+    function buildCarousel(el){
+      if (!el || el.dataset.mounted === "1") return;
+      el.dataset.mounted = "1";
+
+      const slug = (el.dataset.slug || "").trim();
+      const count = Number(el.dataset.count || "0");
+      const ext = (el.dataset.ext || "jpg").trim();
+
+      if (!el.querySelector(".carousel-track")){
+        el.classList.add("carousel");
+        el.innerHTML = `
+          <div class="carousel-track"></div>
+          <button class="carousel-btn prev" type="button" aria-label="Anterior">‹</button>
+          <button class="carousel-btn next" type="button" aria-label="Siguiente">›</button>
+          <div class="carousel-dots" aria-hidden="false"></div>
+        `;
+      }
+
+      const track = el.querySelector(".carousel-track");
+      const prevBtn = el.querySelector(".carousel-btn.prev");
+      const nextBtn = el.querySelector(".carousel-btn.next");
+      const dots = el.querySelector(".carousel-dots");
+      if (!track || !dots) return;
+
+      const images = [];
+      for (let i=1; i<=count; i++) images.push(encodeURI(`assets/servicios/${slug}_${pad2(i)}.${ext}`));
+
+      track.innerHTML = images.map((src, idx) => `
+        <div class="carousel-slide" data-idx="${idx}">
+          <div class="carousel-bg" style="background-image:url('${src}')"></div>
+          <div class="carousel-shade" aria-hidden="true"></div>
+          <img class="carousel-img" src="${src}" alt="" loading="lazy" decoding="async"
+               onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22 viewBox=%220 0 640 360%22%3E%3Crect width=%22640%22 height=%22360%22 fill=%22%23EEF2FF%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 font-family=%22Arial%22 font-size=%2218%22 fill=%22%233B82F6%22%3EImagen no disponible%3C/text%3E%3C/svg%3E';" />
+          <button type="button" class="carousel-zoom" data-zoom="${src}" aria-label="Ver imagen en grande">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 21l-4.3-4.3"/>
+              <circle cx="11" cy="11" r="7"/>
+              <path d="M11 8v6M8 11h6"/>
+            </svg>
+          </button>
+        </div>
+        `).join("");
+
+      dots.innerHTML = images.map((_, idx) => `<button class="dot" type="button" aria-label="Ir a imagen ${idx+1}" aria-current="${idx===0?'true':'false'}"></button>`).join("");
+
+      let index = 0; const total = images.length;
+
+      function render(){
+        track.style.transform = `translateX(-${index*100}%)`;
+        const dotEls = Array.from(dots.querySelectorAll(".dot"));
+        dotEls.forEach((d,i)=> d.setAttribute("aria-current", i===index ? "true" : "false"));
+      }
+      function next(){ index = (index + 1) % total; render(); }
+      function prev(){ index = (index - 1 + total) % total; render(); }
+
+      nextBtn?.addEventListener("click", next);
+      prevBtn?.addEventListener("click", prev);
+      dots?.addEventListener("click", (ev) => {
+        const dotEls = Array.from(dots.querySelectorAll(".dot"));
+        const i = dotEls.indexOf(ev.target);
+        if (i >= 0){ index = i; render(); }
+      });
+
+      let timer = null;
+      const start = () => { timer = setInterval(next, 5500); };
+      const stop = () => { if (timer) clearInterval(timer); timer = null; };
+      el.addEventListener("mouseenter", stop);
+      el.addEventListener("mouseleave", start);
+
+      if (total > 1) start();
+      render();
+    }
+
+    $$(".service-carousel").forEach(buildCarousel);
+
+    const experienceLogos = [
+      { name:"Canal 13", src:"assets/logos/canal 13.png", category:"medios" },
+      { name:"Chilevisión", src:"assets/logos/chv.png", category:"medios" },
+      { name:"Canales TV", src:"assets/logos/canales Tv.jpg", category:"medios" },
+      { name:"CDN Media Group", src:"assets/logos/cdn media group.jpg", category:"medios" },
+      { name:"Mega", src:"assets/logos/mega.webp", category:"medios" },
+      { name:"Lucid Dreams", src:"assets/logos/lucid dreams.png", category:"medios" },
+
+      { name:"Dominó", src:"assets/logos/logo-domino.png", category:"retail" },
+      { name:"Hasbro", src:"assets/logos/LOGO HASBRO.jpg", category:"retail" },
+      { name:"Flipa", src:"assets/logos/LOGO FLIPA.png", category:"retail" },
+      { name:"Movix", src:"assets/logos/Movix.png", category:"retail" },
+      { name:"Naturabel", src:"assets/logos/Naturabel logo.jpg", category:"retail" },
+      { name:"Excel", src:"assets/logos/logo excell-01.jpg", category:"retail" },
+
+      { name:"Claro", src:"assets/logos/claro.jpeg", category:"telecom" },
+      { name:"Entel", src:"assets/logos/LOGO-ENTEL.png", category:"telecom" },
+      { name:"Celcom", src:"assets/logos/celcom.png", category:"telecom" },
+
+      { name:"ANFP", src:"assets/logos/logo anfp.png", category:"otros" },
+      { name:"Campeonato Primera B", src:"assets/logos/LOGO vertical Primera B.png", category:"otros" },
+      { name:"Daewoo Electronics", src:"assets/logos/daewoo-371.jpg", category:"otros" },
+      { name:"Digevo", src:"assets/logos/digevo.jpg", category:"otros" },
+      { name:"PRODESA", src:"assets/logos/prodesa.png", category:"otros" },
+      { name:"3G Motion", src:"assets/logos/3gmotion.jpg", category:"otros" },
+      { name:"Agosín Floky", src:"assets/logos/agosinfloky.png", category:"otros" },
+      { name:"Clínica Estética W", src:"assets/logos/clinica estetica w.png", category:"otros" },
+      { name:"Hipnosalud", src:"assets/logos/hipnosalud.png", category:"otros" },
+      { name:"ViajaEstudia", src:"assets/logos/logo viaja estudia.png", category:"otros" },
+      { name:"VisualFace", src:"assets/logos/LOGO VISUALFACE.png", category:"otros" },
+      { name:"Antonio Banderas", src:"assets/logos/logo_antonio.jpg", category:"otros" },
+      { name:"National Geographic", src:"assets/logos/national.png", category:"otros" },
+      { name:"Opratel", src:"assets/logos/opratel.png", category:"otros" },
+      { name:"RealTime", src:"assets/logos/realtime.png", category:"otros" },
+      { name:"Ringa", src:"assets/logos/ringa.jpg", category:"otros" },
+      { name:"Rymed", src:"assets/logos/rymed.png", category:"otros" },
+      { name:"Selva Viva", src:"assets/logos/selva viva.jpg", category:"otros" },
+      { name:"JuegaEnLinea", src:"assets/logos/jel.jpg", category:"otros" },
+    ];
+
+    const logosMarquee = $("#logosMarquee");
+    const filterButtons = $$(".filterBtn");
+    let activeFilter = "all";
+
+    function renderLogos(){
+      if (!logosMarquee) return;
+      const list = (activeFilter === "all") ? experienceLogos : experienceLogos.filter(l => l.category === activeFilter);
+      const html = list.map(l => `
+        <div class="logo-card">
+          <img src="${l.src}" alt="${l.name}" loading="lazy" decoding="async"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <span style="display:none;font-size:11px;font-weight:700;color:rgb(42,62,140);text-align:center;line-height:1.3;align-items:center;justify-content:center;">${l.name}</span>
+        </div>
+      `).join("");
+      logosMarquee.innerHTML = html + html;
+      const speed = Math.max(15, list.length * 2.2);
+      logosMarquee.style.animationDuration = speed + "s";
+    }
+
+    function setActiveFilter(v){
+      activeFilter = v || "all";
+      filterButtons.forEach(btn => btn.setAttribute("aria-pressed", (btn.dataset.filter === activeFilter) ? "true" : "false"));
+      renderLogos();
+    }
+
+    filterButtons.forEach(btn => btn.addEventListener("click", () => setActiveFilter(btn.dataset.filter)));
+    setActiveFilter("all");
+
+    const form = $("#contactForm");
+    const msg = $("#formMsg");
+    const submitBtn = $("#submitBtn");
+    function isEmailValid(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || "").trim()); }
+    function digitsOnly(v){ return String(v || "").replace(/\D/g, ""); }
+
+    form?.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      if (!msg || !submitBtn) return;
+
+      const nombre = $("#nombre")?.value?.trim();
+      const empresa = $("#empresa")?.value?.trim();
+      const telefono = digitsOnly($("#telefono")?.value);
+      const email = $("#email")?.value?.trim();
+      const tamano = $("#tamano")?.value?.trim();
+      const mensaje = $("#mensaje")?.value?.trim();
+
+      const errors = [];
+      if (!nombre) errors.push("Nombre y Apellido es obligatorio.");
+      if (!empresa) errors.push("Empresa es obligatoria.");
+      if (!telefono || telefono.length < 8) errors.push("Teléfono debe tener al menos 8 dígitos.");
+      if (!email || !isEmailValid(email)) errors.push("Email no es válido.");
+      if (!tamano) errors.push("Selecciona Tamaño de Empresa.");
+      if (!mensaje) errors.push("Mensaje es obligatorio.");
+
+      if (errors.length) {
+        msg.textContent = errors[0];
+        msg.className = "text-sm font-semibold";
+        msg.style.color = "rgb(var(--peak-red))";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-70","cursor-not-allowed");
+      submitBtn.textContent = "Enviando...";
+
+      try{
+        await new Promise(r => setTimeout(r, 900));
+        msg.textContent = "Mensaje enviado. Te responderemos a la brevedad.";
+        msg.className = "text-sm font-semibold";
+        msg.style.color = "rgb(var(--peak-green))";
+        form.reset();
+      } catch(e){
+        msg.textContent = "No se pudo enviar. Intenta nuevamente.";
+        msg.className = "text-sm font-semibold";
+        msg.style.color = "rgb(var(--peak-red))";
+      } finally{
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-70","cursor-not-allowed");
+        submitBtn.textContent = "Enviar";
+      }
+    });
+  
+
+    // Ensamblar emails (evita ofuscación de Cloudflare)
+    document.querySelectorAll('.email-reveal').forEach(el => {
+      const addr = el.dataset.u + '@' + el.dataset.d;
+      const a = document.createElement('a');
+      a.href = 'mailto:' + addr;
+      a.textContent = addr;
+      a.className = 'hover:text-[rgb(42,62,140)] transition-colors';
+      el.replaceWith(a);
+    });
+
+    // Pills de servicio
+    document.querySelectorAll('.servicio-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.servicio-pill').forEach(p => p.classList.remove('activo'));
+        pill.classList.add('activo');
+        const input = document.getElementById('servicioSeleccionado');
+        if (input) input.value = pill.dataset.servicio;
+      });
+    });
+
+
+    // === SWIPE TOUCH para carruseles (iOS + Android) ===
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      let startX = 0, isDragging = false;
+      carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+      carousel.addEventListener('touchend', e => {
+        if (!isDragging) return;
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) {
+          const prev = carousel.querySelector('.carousel-prev');
+          const next = carousel.querySelector('.carousel-next');
+          if (diff > 0 && next) next.click();
+          else if (diff < 0 && prev) prev.click();
+        }
+        isDragging = false;
+      }, { passive: true });
+    });
+
+    // Lightbox (ver imagen completa)
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    function openLightbox(src){
+      if(!lightbox || !lightboxImg) return;
+      lightboxImg.src = src;
+      lightbox.classList.remove("hidden");
+      document.body.classList.add("overflow-hidden");
+    }
+    function closeLightbox(){
+      if(!lightbox) return;
+      lightbox.classList.add("hidden");
+      document.body.classList.remove("overflow-hidden");
+      if(lightboxImg) lightboxImg.src = "";
+    }
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest?.(".carousel-zoom");
+      if(btn?.dataset?.zoom){
+        openLightbox(btn.dataset.zoom);
+        return;
+      }
+      const img = e.target.closest?.(".carousel-img");
+      if(img?.src && img.closest?.(".carousel")){
+        openLightbox(img.src);
+      }
+    });
+
+    lightboxClose?.addEventListener("click", closeLightbox);
+    lightbox?.addEventListener("click", (e) => {
+      if(e.target === lightbox || e.target === lightbox.firstElementChild) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape") closeLightbox();
+    });
+
+</script>
+<!-- Lightbox -->
+<div class="fixed inset-0 z-[80] hidden" id="lightbox">
+<div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm"></div>
+<div class="relative mx-auto flex h-full max-w-6xl items-center justify-center p-4">
+<button aria-label="Cerrar" class="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white hover:bg-white/30 text-xl" id="lightboxClose" type="button">✕</button>
+<img alt="" class="max-h-full max-w-full rounded-2xl object-contain shadow-2xl" id="lightboxImg" src=""/>
+</div>
+</div>
+</body>
+</html>
